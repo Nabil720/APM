@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= data.name %> - <%= data.title %></title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text"><%= data.name.split(' ')[0] %></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Hi , I'm <span class="highlight"><%= data.name.split(' ')[0] %></span>
+                </h1>
+                <h2 class="hero-subtitle"><%= data.title %></h2>
+                <p class="hero-description">
+                    Securing the DevOps pipeline with cutting-edge cybersecurity expertise and automation
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="security-animation">
+                    <div class="shield-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="orbit orbit-1"></div>
+                    <div class="orbit orbit-2"></div>
+                    <div class="orbit orbit-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p><%= data.about %></p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>700+</h3>
+                            <p>Problems Solved</p>
+                        </div>
+                        <div class="stat">
+                            <h3>4th</h3>
+                            <p>MIST CyberTron 2025</p>
+                        </div>
+                        <div class="stat">
+                            <h3>1+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> DevSecOps</h3>
+                    <div class="skill-tags">
+                        <% data.skills.devsecops.forEach(skill => { %>
+                            <span class="skill-tag devsecops"><%= skill %></span>
+                        <% }) %>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-shield-alt"></i> Security</h3>
+                    <div class="skill-tags">
+                        <% data.skills.security.forEach(skill => { %>
+                            <span class="skill-tag security"><%= skill %></span>
+                        <% }) %>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Development</h3>
+                    <div class="skill-tags">
+                        <% data.skills.development.forEach(skill => { %>
+                            <span class="skill-tag development"><%= skill %></span>
+                        <% }) %>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Databases & Tools</h3>
+                    <div class="skill-tags">
+                        <% data.skills.databases.forEach(skill => { %>
+                            <span class="skill-tag database"><%= skill %></span>
+                        <% }) %>
+                        <% data.skills.tools.forEach(skill => { %>
+                            <span class="skill-tag tool"><%= skill %></span>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <% data.projects.forEach((project, index) => { %>
+                    <div class="project-card <%= project.type %>">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas <%= project.type === 'security' ? 'fa-shield-alt' : 'fa-code' %>"></i>
+                            </div>
+                            <span class="project-type"><%= project.type %></span>
+                        </div>
+                        <h3><%= project.title %></h3>
+                        <p><%= project.description %></p>
+                        <div class="project-tech">
+                            <% project.tech.forEach(tech => { %>
+                                <span class="tech-tag"><%= tech %></span>
+                            <% }) %>
+                        </div>
+                        <div class="project-period"><%= project.period %></div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <% data.experience.forEach((exp, index) => { %>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3><%= exp.title %></h3>
+                            <h4><%= exp.company %></h4>
+                            <div class="timeline-meta">
+                                <span class="period"><%= exp.period %></span>
+                                <span class="location"><%= exp.location %></span>
+                            </div>
+                            <p><%= exp.description %></p>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2 class="section-title">Achievements</h2>
+            <div class="achievements-grid">
+                <% data.achievements.forEach(achievement => { %>
+                    <div class="achievement-card">
+                        <i class="fas fa-trophy"></i>
+                        <p><%= achievement %></p>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always interested in discussing DevSecOps opportunities, cybersecurity challenges, and innovative projects.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span><%= data.email %></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span><%= data.phone %></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><%= data.location %></span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="<%= data.github %>" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="<%= data.linkedin %>" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 <%= data.name %>. All rights reserved. | Built with security in mind.</p>
+        </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

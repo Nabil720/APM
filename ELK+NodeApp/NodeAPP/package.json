@@ -1,0 +1,29 @@
+{
+  "name": "istiaquenabil-portfolio",
+  "version": "1.0.0",
+  "description": "DevSecOps Engineer Portfolio - Istiaque Faroque Nabil",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "echo 'Build completed'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": ["portfolio", "devsecops", "nodejs", "cybersecurity"],
+  "author": "Istiaque Faroque Nabil",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ejs": "^3.1.9",
+    "nodemailer": "^6.9.7",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

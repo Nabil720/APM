@@ -1,0 +1,26 @@
+services:
+  app:
+    build: .
+    container_name: portfolio-app
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - ELASTIC_APM_SERVICE_NAME=portfolio-app
+      - ELASTIC_APM_SERVER_URL=http://172.31.23.91:8200
+      # - ELASTIC_APM_SECRET_TOKEN=yourtoken   # if you set auth on apm-server
+    volumes:
+      - .:/usr/src/app
+    command: ["npm","start"]
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:9.1.5-amd64  # Ensure you're using the right version of Filebeat
+    container_name: filebeat
+    volumes:
+      - "/var/lib/docker/containers:/var/lib/docker/containers:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./filebeat.yml:/etc/filebeat/filebeat.yml:ro"  # Bind the filebeat configuration
+    environment:
+      - ELASTICSEARCH_HOST=http://172.31.23.91:9200  # Elasticsearch instance IP
+    restart: unless-stopped
